@@ -11,6 +11,14 @@ services:
     depends_on:
       - mysql
 
+  node:
+    image: node:18
+    container_name: node_app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    command: sh -c "npm install && npm run build"
+
   mysql:
     image: mysql:8.0
     container_name: mysql_db
